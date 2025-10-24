@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CloneXpert - Dicas</title>
+    <link rel="shortcut icon" th:href="@{/3.png}" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <!-- Bootstrap Icons -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4ff, #d9e4ff);
+            min-height: 100vh;
+            margin: 0;
+            color: #222;
+        }
+
+        body.dark {
+            background: #181c24;
+            color: #e2e8f0;
+        }
+
+        /* Navbar */
+        nav.navbar {
+            background: #3b82f6;
+            box-shadow: 0 4px 15px rgb(59 130 246 / 0.3);
+            padding: 0.85rem 1.5rem;
+        }
+        nav.navbar .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            user-select: none;
+            text-shadow: 0 1px 3px rgb(0 0 0 / 0.3);
+        }
+        nav.navbar .btn-primary {
+            background-color: #2563eb;
+            border: none;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgb(37 99 235 / 0.5);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        nav.navbar .btn-primary:hover,
+        nav.navbar .btn-primary:focus {
+            background-color: #1d4ed8;
+            box-shadow: 0 7px 20px rgb(29 78 216 / 0.7);
+        }
+        body.dark nav.navbar {
+            background: #23293a;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            padding: 2rem 1rem;
+        }
+        body.dark .container {
+            background: #23293a;
+            color: #e2e8f0;
+        }
+        body.dark .card {
+            background: #23293a;
+            color: #e2e8f0;
+            box-shadow: 0 10px 28px rgba(10, 20, 35, 0.5);
+        }
+        body.dark .card-header {
+            background: #23293a;
+            color: #81aaff;
+        }
+        body.dark .btn-outline-danger {
+            color: #ffe066;
+            border-color: #ffe066;
+        }
+        body.dark .btn-outline-danger:hover,
+        body.dark .btn-outline-danger:focus {
+            background-color: #ffe066;
+            color: #23293a;
+        }
+        body.dark #darkModeToggle {
+            color: #ffe066;
+        }
+        body.dark h1, body.dark h2 {
+            color: #81aaff;
+        }
+        body.dark p, body.dark ul {
+            color: #e2e8f0;
+        }
+        body.dark footer {
+            color: #a5b4fc;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 2.25rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            color: #2563eb;
+            user-select: text;
+        }
+        p {
+            font-size: 1rem;
+            color: #334155;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: #334155;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Rodapé */
+        footer {
+            margin-top: 60px;
+            padding: 24px 0;
+            text-align: center;
+            color: #64748b;
+            font-weight: 500;
+            font-size: 0.95rem;
+            user-select: none;
+        }
+
+        /* Botão modo escuro */
+        #darkModeToggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #222; /* preto no modo claro */
+            z-index: 2000;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        body.dark #darkModeToggle {
+            color: #ffe066;
+        }
+
+        /* Responsividade */
+        @media (max-width: 576px) {
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<button id="darkModeToggle" aria-label="Alternar modo claro/escuro" title="Modo escuro">
+    <i class="bi bi-moon-stars"></i>
+</button>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm" role="navigation" aria-label="Menu principal CloneXpert">
+    <div class="container">
+        <a class="navbar-brand" href="/" aria-label="Página inicial do CloneXpert">CloneXpert</a>
+        <a class="btn btn-primary" href="/panel" role="button" aria-label="Voltar para a página inicial">
+            <i class="bi bi-arrow-left-circle"></i> Voltar
+        </a>
+    </div>
+</nav>
+
+<!-- Conteúdo -->
+<!-- Conteúdo -->
+<div class="container" role="main">
+    <h1>Dicas para utilização da CloneXpert</h1>
+
+    <!-- Aviso Importante reforçado -->
+    <div role="alert" aria-live="polite" aria-atomic="true" class="card border-danger border-3 mb-4" style="box-shadow: 0 0 15px rgba(220,53,69,0.7); border-radius: 12px;">
+        <div class="card-header bg-danger text-white fw-bold d-flex align-items-center" style="gap: 0.5rem; border-bottom: none; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+            <i class="bi bi-exclamation-triangle-fill" aria-hidden="true" style="font-size: 1.8rem;"></i>
+            Aviso Importante
+        </div>
+        <div class="card-body text-danger fs-5" style="line-height: 1.6;">
+            <p>
+                A plataforma <strong>não se responsabiliza</strong> por quaisquer conteúdos clonados. O usuário é o único responsável pelo uso do conteúdo obtido.
+            </p>
+            <p>
+                Nem todo site será clonado <strong>completamente pronto para uso</strong>. Alguns arquivos, recursos ou funcionalidades podem estar ausentes ou precisar de ajustes manuais após a clonagem.
+            </p>
+            <p>
+                Recomendamos revisar cuidadosamente o conteúdo clonado e consultar os nossos termos de uso antes de prosseguir.
+            </p>
+            <a href="/terms" class="btn btn-outline-danger fw-semibold" role="button" aria-label="Ir para página de termos de uso" style="border-width: 2px;">
+                Ver Termos de Uso
+            </a>
+        </div>
+    </div>
+
+    <!-- Dicas -->
+    <h2>Como usar a CloneXpert da melhor forma</h2>
+    <ul>
+        <li><strong>Informe a URL correta:</strong> Sempre coloque a URL completa, iniciando com <code>http://</code> ou <code>https://</code> para garantir a clonagem.</li>
+        <li><strong>Escolha a profundidade ideal:</strong> Defina de 1 a 5 níveis para seguir links internos. Quanto maior, mais arquivos serão clonados, mas o processo pode levar mais tempo.</li>
+        <li><strong>Selecione o modo adequado:</strong>
+            <ul>
+                <li><strong>Static:</strong> Baixa arquivos estáticos (HTML, CSS, JS, imagens). Mais rápido e econômico.</li>
+                <li><strong>Headless:</strong> Simula um navegador real para capturar conteúdos dinâmicos gerados por JavaScript. Mais preciso, porém mais pesado e caro.</li>
+            </ul>
+        </li>
+        <li><strong>Links externos:</strong> Ative esta opção apenas se quiser que o clone siga links para outros domínios, mas use com cuidado para não aumentar muito o volume da clonagem.</li>
+        <li><strong>Revise o conteúdo clonado:</strong> Após a clonagem, verifique os arquivos baixados. Alguns recursos podem precisar de ajustes manuais para funcionar corretamente.</li>
+        <li><strong>Créditos:</strong> Fique atento ao custo da clonagem — modos mais avançados consomem mais créditos.</li>
+        <li><strong>Suporte:</strong> Qualquer dúvida ou problema, use o botão do WhatsApp no canto inferior direito para contato rápido.</li>
+    </ul>
+</div>
+
+<!-- Botão flutuante WhatsApp -->
+<a href="https://wa.me/554731701794" target="_blank"
+   aria-label="Contato pelo WhatsApp"
+   style="
+     position: fixed;
+     bottom: 20px;
+     right: 20px;
+     background-color: #25D366;
+     color: white;
+     border-radius: 50%;
+     width: 60px;
+     height: 60px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+     z-index: 1000;
+     text-decoration: none;
+     font-size: 30px;
+     transition: background-color 0.3s ease;
+   "
+   onmouseover="this.style.backgroundColor='#128C7E';"
+   onmouseout="this.style.backgroundColor='#25D366';"
+>
+    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+</a>
+
+
+<!-- Rodapé -->
+<footer>
+    <p>&copy; 2025 CloneXpert. Todos os direitos reservados.</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script>
+    // Modo escuro
+    const darkToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    const icon = darkToggle.querySelector('i');
+    if (localStorage.getItem('cloneXpertDarkMode') === 'true') {
+        body.classList.add('dark');
+        icon.className = 'bi bi-sun-fill';
+        darkToggle.setAttribute('aria-pressed', 'true');
+    }
+    darkToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        const isDark = body.classList.contains('dark');
+        localStorage.setItem('cloneXpertDarkMode', isDark);
+        icon.className = isDark ? 'bi bi-sun-fill' : 'bi bi-moon-stars';
+        darkToggle.setAttribute('aria-pressed', isDark.toString());
+    });
+</script>
+</body>
+</html>
